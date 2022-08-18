@@ -40868,3 +40868,36 @@ Completed 200 OK in 40ms (Views: 23.8ms | ActiveRecord: 2.1ms | Allocations: 723
 
   [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePasswordDigestFromProfile (20220818123823)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aprofiles" ("id" integer NOT NULL PRIMARY KEY, "hired_freelacers" integer DEFAULT NULL, "name" varchar DEFAULT NULL, "phone" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "country" varchar DEFAULT NULL, "pending_projects" integer DEFAULT NULL, "completed_projects" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "role" varchar DEFAULT NULL, "password_digest" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aprofiles" ("id","hired_freelacers","name","phone","email","country","pending_projects","completed_projects","created_at","updated_at","role","password_digest")
+                     SELECT "id","hired_freelacers","name","phone","email","country","pending_projects","completed_projects","created_at","updated_at","role","password_digest" FROM "profiles"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "profiles"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer NOT NULL PRIMARY KEY, "hired_freelacers" integer DEFAULT NULL, "name" varchar DEFAULT NULL, "phone" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "country" varchar DEFAULT NULL, "pending_projects" integer DEFAULT NULL, "completed_projects" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "role" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "profiles" ("id","hired_freelacers","name","phone","email","country","pending_projects","completed_projects","created_at","updated_at","role")
+                     SELECT "id","hired_freelacers","name","phone","email","country","pending_projects","completed_projects","created_at","updated_at","role" FROM "aprofiles"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aprofiles"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220818123823"]]
+  [1m[36mTRANSACTION (3229.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPasswordToProfile (20220818123851)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "profiles" ADD "password" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220818123851"]]
+  [1m[36mTRANSACTION (683.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
