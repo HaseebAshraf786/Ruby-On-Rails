@@ -1,0 +1,68 @@
+<% if params[:commit] =="search"%>
+    <%@profile = Profile.find(session[:id])%>
+<%end%>
+<div style="margin:0% 10% 0% 10%;padding:5px 0px 5px 0px;">
+<div style="background-color:#8B8000;margin:5px 0px 5px 0px;padding:0px;">
+<%=notice%>
+</div>
+<%if @profile.role == "buyer" %>
+    <table>
+    <th >
+    <%= link_to "Post New", new_profile_post_path(@profile),{ :style =>"margin-right:5px;",:class => "btn btn-success "}%>
+    </th>
+    <th>
+    <%= link_to "Closed Posts", closed_profile_path(@profile) ,{ :class => "btn btn-success " }%>
+    </th>
+    </table>
+<%end%>
+ <%if @profile.role =="seller"%>
+            <table>
+            <th>
+            <%= link_to "See previously applied",applicants_profile_path(@profile),{ :class => "btn btn-success "}%>
+            <%= link_to "Completed projects",completed_profile_path(@profile),{ :class => "btn btn-success "}%>
+            </th>
+            <th style= "padding-left:500px"> 
+            <%= form_with url: '/search',method: :get do |form|%>
+                <td>
+                <%= form.text_field :name,{:class =>"form-control"}%>
+                </td>
+                <td>
+                <%= form.submit "search",{ :style=>"margin-left:5px;",:class => "btn btn-success input-group-text "}%>
+                </td>
+           
+            <%end%>
+            </th>
+            </table>
+            
+<%end%>
+<% @posts.each do |post|%>
+    <%if post.pstatus == "opened"%>
+<div style = "border:2px solid green;margin-top:5px;margin-bottom:2px;padding:30px;background-color:
+#d5dbdb ;">
+        <h4>Description</h4>
+        <%= post.description%><br>
+        <h4>Requirement</h4>
+        <%= post.requirement%><br>
+        <h4>Budget</h4>
+        <%= post.budget%>$<br>
+        <%if @profile.role == 'seller'%>
+            <h4>Skills Required</h4>
+            <% post.skills.each do |skill|%>
+                <%= skill.name%> | 
+                <%= skill.perhourrate%>$<br>
+            <%end%>
+            <%= button_to "Apply", "/profiles/#{@profile.id}/posts/#{post.id}/applicants",method: :post %>
+        <%else%>
+        <table>
+        <th>
+            <%= button_to "Add more skills" ,"/profiles/#{@profile.id}/posts/#{post.id}/skills/new",method: :get%>
+            </th>
+            <th>
+            <%= button_to "See applications","/profiles/#{@profile.id}/posts/#{post.id}/applicants",method: :get %>
+            </th>
+            </table>
+        <%end%>
+</div>
+    <%end%>  
+<%end%>
+</div>

@@ -1,0 +1,26 @@
+<div  style="margin:0% 10% 0% 10%;padding:5px 0px 5px 0px;background-color:gray;">
+<% @applications.each do |a|%>  
+        <% post=Post.find(a.post_id)%>
+        <% if post.progress != 'completed'%>
+                <div style = "margin:0% 10% 0% 10%; border:2px solid green;margin-top:5px;padding:10px;background-color: #d5dbdb ;"> 
+                        <h4>Description</h4>
+                        <%= post.description%><br>
+                        <h4>Reruirement</h4>
+                        <%= post.requirement%><br>
+                        <h4>Budget</h4>
+                        <%= post.budget%>$<br>
+                        <p style="color: red;border:2px solid red;width:40%;padding:3px;">Have you completed this project? IF Yes Click below</p>
+                        <%= button_to "Yes", "/profiles/#{params[:id]}/posts/#{a.post_id}" ,method: :get%>
+                        <h4>Status</h4>
+                        <p style="color: green">Pending</p>
+                        <h4>Progress</h4>
+                        <% if a.astatus == 'hired' %>
+                                <p>You are hired for this GIG</p>
+                        <%else%>
+                                <p>Yet not hired</p>
+                        <%end%>
+                        <br>
+                 </div>
+        <%end%>
+<%end%>
+</div>

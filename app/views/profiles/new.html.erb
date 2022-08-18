@@ -1,0 +1,33 @@
+
+<%= form_with model: @profile do |form|%>
+    <div class="input-group" style="margin:10%;margin-left:35%;width:30%;">
+        <div style="background-color:#8B8000;margin:5px 0px 5px 0px;padding:0px;">
+        <%=alert%>
+        </div>
+        <%= form.text_field :name,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :name%>
+        </div>
+        <%= form.email_field :emai,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :email%>
+        </div>
+        <%= form.text_field :phone ,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :phone%>
+        </div>
+        <%= form.text_field :country,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :country%>
+        </div>
+        <%= form.password_field :password ,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :password %>
+        </div>
+        <%= form.select :role,options_for_select([['buyer','0'],['seller','1']]),{include_blank: false} ,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :role%>
+        </div>
+        <%= form.submit "SIGN UP"%>  
+    </div>
+<%end%>

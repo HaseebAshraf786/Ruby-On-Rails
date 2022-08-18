@@ -1,0 +1,9 @@
+
+<%=form_with model: @post do |form|%>
+ <div class="input-group" style="margin:10%;margin-left:35%;width:30%;">
+    <%= form.number_field :rate,{:class=>"form-control",max:5,min:1}%>
+    <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+        <%= form.label :rate%>
+    </div>
+    <%=form.submit "RATE"%>
+    <%end%>

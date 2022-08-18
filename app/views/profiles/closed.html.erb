@@ -1,0 +1,30 @@
+<div  style="margin:0% 10% 0% 10%;padding:5px 0px 5px 0px;">
+    <% @posts.each do |post|%>
+        <%if post.pstatus == 'closed'%>
+            <div style = "margin:0% 10% 0% 10%; border:2px solid green;margin-top:5px;padding:10px;background-color:
+            #d5dbdb ;">
+                
+                <h4>Description</h4>
+                <%= post.description%><br>
+                <h4>Reruirement</h4>
+                <%= post.requirement%><br>
+                <h4>Budget</h4>
+                <%= post.budget%>$<br>
+                <h4>Progress</h4>
+                <%if post.progress == 'completed'%>
+                    <p>Completed</p>
+
+                    <%if post.rate == nil%>
+                        <%= button_to "Give me review", "/profiles/#{post.buyer_id}/posts/#{post.id}/review",method: :get %>
+                    <%else%>
+                        <h4>Rating</h4>
+                        <%= post.rate %>
+                    <%end%>
+               <%else%>
+                    <>
+                     <button>Pending</button>
+                <%end%>
+            <%end%>
+        </div>
+    <%end%>
+</div>

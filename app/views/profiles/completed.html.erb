@@ -1,0 +1,24 @@
+<div  style="margin:0% 10% 0% 10%;padding:5px 0px 5px 0px;">
+<% @posts.each do |post|%>
+<div style = "border:2px solid green;margin-top:5px;padding:30px;background-color:
+#d5dbdb ;">
+    <%if post.progress == 'completed'%>
+       
+        <h4>Description</h4>
+        <%= post.description%><br>
+        <h4>Reruirement</h4>
+        <%= post.requirement%><br>
+        <h4>Budget</h4>
+        <%= post.budget%>$<br>
+        <h4>Rating</h4>
+        <%= post.rate %><br>
+            <h4>Skills Required</h4>
+            <% post.skills.each do |skill|%>
+                <%= skill.name%>    |
+                  <%= skill.perhourrate%>$<br>
+            <%end%>
+        
+    <%end%>
+    </div>
+<%end%>
+</div>

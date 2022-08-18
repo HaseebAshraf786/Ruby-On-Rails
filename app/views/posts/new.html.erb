@@ -1,0 +1,25 @@
+
+<%= form_with model: @post do |post| %>
+<div class="input-group" style="margin:10%;margin-left:35%;width:30%;">
+    <%= post.text_field :budget,{:class=>"form-control"}%><br>
+    <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+    <%= post.label :budget%>
+    </div>
+
+    <%= post.text_area :requirement,{:class=>"form-control"}%><br>
+    <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px px 4px 0px;" >
+    <%= post.label :requirement%>
+     </div>
+
+    <%= post.text_area :description,{:class=>"form-control"}%><br>
+    <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+    <%= post.label :description%>
+     </div>
+
+    <%= post.select :pstatus,options_for_select([['0','opened']]),{include_blank: false},{:class=>"form-control"}%>
+    <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+    <%= post.label :pstatus, "Status"%>
+    </div>
+    <%= post.submit "POST NEW"%>
+</div>
+<%end%>

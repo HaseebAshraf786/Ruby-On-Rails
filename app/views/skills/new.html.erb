@@ -1,0 +1,13 @@
+<%=form_with model: @skills do |form|%>
+    <div class="input-group" style="margin:10%;margin-left:35%;width:30%;">
+        <%= form.text_field :name ,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :name%>
+        </div>
+        <%= form.number_field :perhourrate,{:class=>"form-control"}%>
+        <div style="background-color: #82e0aa ; padding-left:105px; border-radius:10px;margin:0px 0px 4px 0px;" >
+            <%= form.label :perhourrate%>
+        </div>
+        <%= form.submit "ADD"%>
+    </div>
+<%end%>
