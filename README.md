@@ -1,5 +1,5 @@
 # README
-Welcome to our ecommerce web app project! This project was completed as the final project at Qbatch by an intern.
+Welcome to our ecommerce web app project! This project was completed as the final project at Qbatch by me.
 
 Our app allows users to hire sellers for their gig or project, and upon completion, they can leave a review. We can add a chatbot feature, as well as a payment method for added convenience. Additionally, we can implement various security measures to ensure the safety of our users.
 
